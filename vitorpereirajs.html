@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Header — vitorpereirajs</title>
+  <style>
+    :root{
+      --header-height: 220px;
+      --overlay-color: rgba(0,0,0,0.35);
+      --accent: #fff;
+      --name-size: 2.0rem;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:#111; color:var(--accent)
+  }
+
+    /* Header */
+    .site-header{
+      position:relative;
+      height:var(--header-height);
+      width:100%;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height: 150px;
+    }
+
+    /* GIF background */
+    .header-bg{
+      position:absolute;inset:0;
+      background-image: url('tumblr_mhxdzdoLoK1qgh647o1_500.gif'); /* substitua pela sua gif */
+      background-size:cover;
+      background-position:center;
+      filter:brightness(0.9) contrast(1.05);
+      z-index:0;
+      will-change:transform;
+      transform-origin:center;
+    }
+
+    /* leve movimento (parallax-ish) */
+    @keyframes slow-zoom{
+      from{transform:scale(1)}
+      to{transform:scale(1.06)}
+    }
+    .header-bg{animation:slow-zoom 12s linear infinite alternate}
+
+    /* overlay para melhorar legibilidade */
+    .header-overlay{
+      position:absolute;inset:0;background:var(--overlay-color);z-index:1;
+    }
+
+    /* Conteúdo do header */
+    .header-content{position:relative;z-index:2;text-align:center;padding:1rem;width:100%;}
+    .site-title{
+      font-weight:700;font-size:var(--name-size);letter-spacing:0.02em;
+      display:inline-block;padding:0.25rem 0.5rem;background:linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));border-radius:8px;
+      backdrop-filter: blur(3px);
+      animation:fadeInUp .7s ease both;
+    }
+
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(10px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .playlist-card {
+      background: black;
+      border-radius: 16px;
+      overflow: hidden;
+      width: 280px;
+      height: 200px;
+      text-align: center;
+      animation: fadeIn 1s ease;
+      margin: auto;
+      margin-top: 20px;
+      
+      
+    }
+
+    .playlist-cover {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      width: 100%;
+      height: 100px;
+      overflow: hidden;
+    }
+
+    .playlist-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      
+    }
+
+    .playlist-info {
+      padding: 10px;
+    }
+
+    .playlist-info h2 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #1db954;
+    }
+
+    .playlist-link {
+      display: inline-block;
+      background: #1db954;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 24px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .playlist-link:hover {
+      background: #17a44b;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .memory-card {
+    position: relative;
+    width: 280px;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    animation: fadeInUp 1s ease forwards;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: auto;
+    margin-top: 60px;
+    
+  }
+
+  /* GIF de fundo */
+  .memory-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('botafogo-campeao-2024-1.jpg'); /* substitua pelo seu GIF */
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6);
+    z-index: 0;
+    transition: transform 0.3s;
+  }
+
+  .memory-card:hover::before {
+    transform: scale(1.05);
+  }
+
+  /* Texto sobreposto */
+  .memory-card-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-align: center;
+    padding: 16px;
+    background: black;
+    width: 100%;
+    border-radius: 0 0 16px 16px;
+    backdrop-filter: blur(4px);
+    
+  }
+
+  .memory-card-content h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.2rem;
+  }
+
+  .memory-card-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #ddd;
+  }
+
+  @keyframes fadeInUp {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  .vibe-card {
+    background: #181818;
+    border-radius: 16px;
+    overflow: hidden;
+    width: 290px;
+    height: 200px;
+    animation: fadeIn 1s ease forwards;
+    margin: auto;
+    margin-top: 50px;
+  }
+
+  .vibe-card-header {
+    padding: 16px;
+    text-align: center;
+    background: black;
+    color: white;
+  }
+
+  .vibe-card-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  .vibe-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    height: 200px;
+  }
+
+  .vibe-card-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .vibe-card-grid img:hover {
+    transform: scale(1.1);
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+   footer {
+    position: relative;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    margin-top: 50px;
+  }
+
+  footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('tumblr_mhxdzdoLoK1qgh647o1_500.gif') center/cover no-repeat;
+    opacity: 0.3; /* controla transparência do GIF */
+    z-index: 0;
+  }
+
+  .footer-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .footer-content h3 {
+    margin: 0;
+    font-size: 1.0rem;
+  }
+
+  .footer-content p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: #ccc;
+  }
+
+   .card {
+    width: 290px;
+    height: 200px;
+    margin: auto;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    margin-top: 50px;
+    
+  }
+
+  .card h2 {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    color: white;
+    font-size: 28px;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .carousel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 1s ease;
+  }
+
+  .carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+
+   .icard {
+    width: 290px;
+    height: 200px;
+    background: #1e293b;
+    border: 3px dashed #facc15;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 50px;
+
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(250, 204, 21, 0.15) 0px,
+      rgba(250, 204, 21, 0.15) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+    animation: stripes 4s linear infinite;
+  }
+
+  @keyframes stripes {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 0; }
+  }
+
+  .content {
+    text-align: center;
+    color: #facc15;
+    z-index: 2;
+  }
+
+  .content h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  .content p {
+    font-size: 0.95rem;
+    color: #fefce8;
+    opacity: 0.8;
+  }
+
+  .icon {
+    font-size: 48px;
+    margin-bottom: 8px;
+    animation: blink 1.5s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.05); }
+  }
+
+  
+
+
+    
+    
+  </style>
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="header-bg" aria-hidden="true"></div>
+    <div class="header-overlay" aria-hidden="true"></div>
+
+   
+
+    <div class="header-content">
+      <h1 class="site-title">vitorpereirajs</h1>
+    </div>
+  </header>
+
+  <div class="playlist-card">
+    <div class="playlist-cover">
+      <img src="icegif-1194.gif" alt="Travis Scott">
+      <img src="huge_avatar.jpg" alt="Grupo Menos é Mais">
+      
+    </div>
+    <div class="playlist-info">
+      <h2>Minha Playlist </h2>
+      <a class="playlist-link" href="https://open.spotify.com/playlist/SEU_LINK_AQUI" target="_blank">Ouvir no Spotify</a>
+    </div>
+  </div>
+
+  <div class="memory-card">
+  <div class="memory-card-content">
+    <h3>É CAMPEÃOOO</h3>
+    <p>Conquistamos a América e o Brasil.</p>
+  </div>
+</div>
+
+<div class="vibe-card">
+   <div class="vibe-card-header">
+    <h2>My Vibe ✨</h2>
+  </div>
+  <div class="vibe-card-grid">
+    <img src="Churrasco.jpg" alt="Vibe 1">
+    <img src="8ec46e192c6386a8901fdf3a449660c1.jpg" alt="Vibe 2">
+   
+  </div>
+
+  
+  
+</div>
+
+ <div class="card">
+    <h2>2025</h2>
+    <div class="carousel" id="carousel">
+      <img src="20250315_181803.jpg" alt="Imagem 1">
+      <img src="20250517_170700.jpg" alt="Imagem 2">
+      <img src="20250722_161453.jpg" alt="Imagem 3">
+      <img src="20250722_180845.jpg" alt="Imagem 4">
+      <img src="20250730_174115.jpg" alt="Imagem 5">
+      <img src="20250812_180917.jpg" alt="Imagem 6">
+      <img src="20250919_144246.jpg" alt="Imagem 7">
+      <img src="InShot_20250215_002749167.jpg" alt="Imagem 8">
+      <img src="InShot_20250215_002816882.jpg" alt="Imagem 9">
+    </div>
+  </div>
+
+<script>
+  const carousel = document.getElementById('carousel');
+  const totalImages = carousel.children.length;
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % totalImages;
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+  }, 2500); // troca a cada 2.5 segundos
+</script>
+
+<div class="icard">
+    <div class="content">
+      <div class="icon">⚠️</div>
+      <h2>Card Interditado</h2>
+      <p>Aguardando uma nova ideia...</p>
+    </div>
+  </div>
+
+
+
+
+
+
+<footer>
+    <div class="footer-content">
+      <h3>Vitor Pereira</h3>
+      <p>© 2025 - Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+
+</body>
+</html>
